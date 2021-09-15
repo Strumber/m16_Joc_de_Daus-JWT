@@ -24,19 +24,23 @@ import org.springframework.web.bind.annotation.*;
 public class UserControler {
 
     @PostMapping("user")
-    public Userauth Login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-        String token = getJWTToken(username);
-        Userauth user = new Userauth();
-        user.setUsername(username);
+    public Userauth Login(@RequestBody Userauth user) {
+   // public Userauth Login(@RequestParam("user") String username, @RequestParam("password") String pwd) 
+
+    	//funcion autenticacion
+    	
+    	    		
+    		
+    	//////////////////////////////////////////////////
+    	String token = getJWTToken(user.getUsername());
+        //Userauth user = new Userauth();
+        //user.setUsername(user.getUsername());
         user.setToken(token);
 
         return user;
     }
 
-	/*private String getJWTToken(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
+	
 
     private String getJWTToken(String username) {
         String secretKey = "mySecretKey";
